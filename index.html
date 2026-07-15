@@ -1,237 +1,713 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#11100e">
-  <meta name="description" content="USA Reise 2026: Las Vegas, Austin und ein Roadtrip durch Texas – 26. August bis 10. September 2026.">
-  <title>USA 2026 — Vegas. Texas. Wir.</title>
-  <link rel="preload" href="assets/hero.svg" as="image" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon &amp; Lone Star — Friedolin &amp; Laura, USA 2026</title>
+<meta name="description" content="17 Tage, zwei Welten: Las Vegas und die texanische Hill Country. Ein Roadtrip-Magazin.">
+
+<meta property="og:title" content="Neon &amp; Lone Star">
+<meta property="og:description" content="17 Tage Las Vegas &amp; Texas — der Roadtrip von Friedolin &amp; Laura, 25.08.–10.09.2026">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;0,900;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-deep:#0f1013;
+    --bg-panel:#16181c;
+    --bg-panel-2:#1b1e23;
+    --pink:#ff6eb4;
+    --pink-glow:#ff4fa3;
+    --orange:#e48a3c;
+    --orange-light:#e4965a;
+    --cream:#f0e6d2;
+    --cream-dim:#cfc4ac;
+    --muted:#a89880;
+    --hair:rgba(240,230,210,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--cream);
+    font-family:'Source Serif 4', serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .tracked{letter-spacing:0.2em;text-transform:uppercase;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:80px 24px 60px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 20% 15%, rgba(255,79,163,0.20), transparent 60%),
+      radial-gradient(ellipse 900px 600px at 85% 85%, rgba(228,138,60,0.20), transparent 60%),
+      var(--bg-deep);
+  }
+  .hero-star{
+    position:absolute;
+    font-size:1px;
+    color:var(--cream);
+    opacity:0;
+    animation:twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{0%,100%{opacity:0.05;}50%{opacity:0.5;}}
+  .kicker{
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:22px;
+    position:relative;
+    z-index:2;
+  }
+  h1.hero-title{
+    font-size:clamp(48px, 10vw, 108px);
+    line-height:0.98;
+    margin:0;
+    font-weight:900;
+    position:relative;
+    z-index:2;
+  }
+  h1.hero-title .neon{
+    display:block;
+    color:var(--pink);
+    text-shadow:0 0 40px rgba(255,79,163,0.55), 0 0 80px rgba(255,79,163,0.25);
+    font-style:italic;
+  }
+  h1.hero-title .lone{
+    display:block;
+    color:var(--orange-light);
+    text-shadow:0 0 40px rgba(228,150,80,0.4);
+  }
+  .hero-sub{
+    margin-top:28px;
+    font-size:clamp(16px, 2.4vw, 20px);
+    color:var(--cream-dim);
+    max-width:560px;
+    line-height:1.6;
+    position:relative;
+    z-index:2;
+  }
+  .hero-byline{
+    margin-top:18px;
+    font-size:13px;
+    color:var(--muted);
+    position:relative;
+    z-index:2;
+  }
+  .hero-dates{
+    margin-top:34px;
+    padding:10px 28px;
+    border:1px solid var(--hair);
+    border-radius:40px;
+    font-size:13px;
+    color:var(--cream);
+    position:relative;
+    z-index:2;
+  }
+  .countdown{
+    margin-top:44px;
+    display:flex;
+    gap:28px;
+    position:relative;
+    z-index:2;
+  }
+  .cd-unit{text-align:center;}
+  .cd-num{
+    font-size:clamp(28px,5vw,42px);
+    font-weight:700;
+    color:var(--pink);
+    font-family:'IBM Plex Mono', monospace;
+    line-height:1;
+  }
+  .cd-label{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:8px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom:32px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    animation:bob 2.2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+  /* ============ STATS STRIP ============ */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
+    border-top:1px solid var(--hair);
+    border-bottom:1px solid var(--hair);
+    background:var(--bg-panel);
+  }
+  .stat{
+    padding:32px 16px;
+    text-align:center;
+    border-right:1px solid var(--hair);
+  }
+  .stat:last-child{border-right:none;}
+  .stat-num{
+    font-size:clamp(26px,4vw,38px);
+    font-weight:700;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--orange-light);
+  }
+  .stat:nth-child(even) .stat-num{color:var(--pink);}
+  .stat-label{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:8px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+
+  /* ============ CHAPTERS ============ */
+  .chapter{
+    max-width:900px;
+    margin:0 auto;
+    padding:110px 24px 40px;
+    position:relative;
+  }
+  .chapter-eyebrow{
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .chapter-eyebrow .roman{
+    font-size:13px;
+    font-weight:600;
+  }
+  .vegas .chapter-eyebrow .roman{color:var(--pink);}
+  .texas .chapter-eyebrow .roman{color:var(--orange-light);}
+  .chapter-eyebrow .line{
+    flex:1;
+    height:1px;
+    background:var(--hair);
+  }
+  h2.chapter-title{
+    font-size:clamp(32px, 5vw, 52px);
+    line-height:1.08;
+    margin:0 0 8px;
+    font-weight:700;
+  }
+  h2.chapter-title em{
+    font-style:italic;
+  }
+  .vegas h2.chapter-title em{color:var(--pink);}
+  .texas h2.chapter-title em{color:var(--orange-light);}
+  .chapter-dates{
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:28px;
+  }
+  .chapter-lede{
+    font-size:18px;
+    line-height:1.7;
+    color:var(--cream-dim);
+    margin-bottom:32px;
+    max-width:640px;
+  }
+  .moment-list{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .moment{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:20px;
+    padding:18px 0;
+    border-top:1px dashed var(--hair);
+  }
+  .moment:first-child{border-top:none;}
+  .moment-date{
+    font-size:11px;
+    color:var(--muted);
+    padding-top:2px;
+  }
+  .vegas .moment-date{color:#d99bc0;}
+  .texas .moment-date{color:#c9a06a;}
+  .moment-body h3{
+    font-size:19px;
+    margin:0 0 6px;
+    font-weight:700;
+  }
+  .moment-body p{
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--cream-dim);
+    margin:0;
+  }
+  .highlight-badge{
+    display:inline-block;
+    font-size:9px;
+    padding:3px 9px;
+    border-radius:20px;
+    margin-left:8px;
+    vertical-align:middle;
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.08em;
+  }
+  .vegas .highlight-badge{background:rgba(255,110,180,0.14);color:var(--pink);border:1px solid rgba(255,110,180,0.35);}
+  .texas .highlight-badge{background:rgba(228,150,80,0.14);color:var(--orange-light);border:1px solid rgba(228,150,80,0.35);}
+
+  .pull-quote{
+    margin:44px 0;
+    padding:28px 32px;
+    border-left:3px solid;
+    font-size:20px;
+    line-height:1.5;
+    font-style:italic;
+    color:var(--cream);
+  }
+  .vegas .pull-quote{border-color:var(--pink);}
+  .texas .pull-quote{border-color:var(--orange-light);}
+
+  /* image figure */
+  .fig{margin:36px 0;}
+  .fig .frame{
+    border-radius:4px;
+    overflow:hidden;
+    aspect-ratio:16/9;
+    background:var(--bg-panel-2);
+  }
+  .fig img{width:100%;height:100%;object-fit:cover;filter:saturate(0.92) contrast(1.03);transition:transform .6s ease;}
+  .fig:hover img{transform:scale(1.03);}
+  .fig figcaption{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+    font-size:11px;
+    color:var(--muted);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* ============ RESTAURANT GUIDE ============ */
+  .guide{
+    background:var(--bg-panel);
+    padding:100px 24px;
+    border-top:1px solid var(--hair);
+    border-bottom:1px solid var(--hair);
+  }
+  .guide-inner{max-width:1080px;margin:0 auto;}
+  .guide-head{text-align:center;margin-bottom:60px;}
+  .guide-head .kicker{margin-bottom:14px;}
+  .guide-head h2{
+    font-size:clamp(32px,5vw,48px);
+    font-weight:700;
+  }
+  .guide-head h2 em{color:var(--pink);font-style:italic;}
+  .station-block{margin-bottom:56px;}
+  .station-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:20px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--hair);
+  }
+  .station-head h3{
+    font-size:24px;
+    font-weight:700;
+    margin:0;
+  }
+  .vegas-tag{color:var(--pink);}
+  .texas-tag{color:var(--orange-light);}
+  .station-head .sh-sub{font-size:12px;color:var(--muted);}
+  .rcards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:18px;
+  }
+  .rcard{
+    background:var(--bg-panel-2);
+    border:1px solid var(--hair);
+    border-radius:6px;
+    padding:22px;
+  }
+  .rcard .rtype{
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:10px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .rcard .rname{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .rcard .rdesc{
+    font-size:13px;
+    line-height:1.55;
+    color:var(--cream-dim);
+  }
+
+  /* ============ BORDBUCH ============ */
+  .bordbuch{
+    max-width:900px;
+    margin:0 auto;
+    padding:100px 24px;
+  }
+  .bordbuch-head{text-align:center;margin-bottom:50px;}
+  .bordbuch-head h2{font-size:clamp(28px,4vw,40px);font-weight:700;}
+  .bb-table{width:100%;border-collapse:collapse;}
+  .bb-table tr{border-top:1px solid var(--hair);}
+  .bb-table tr:first-child{border-top:none;}
+  .bb-table td{
+    padding:14px 10px;
+    font-size:13.5px;
+    vertical-align:top;
+  }
+  .bb-date{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--muted);
+    white-space:nowrap;
+    width:100px;
+    font-size:11.5px;
+  }
+  .bb-tag{
+    width:16px;
+  }
+  .bb-tag .sq{width:8px;height:8px;border-radius:2px;display:inline-block;}
+  .bb-vegas .sq{background:var(--pink);}
+  .bb-texas .sq{background:var(--orange-light);}
+  .bb-what{color:var(--cream-dim);}
+  .bb-what b{color:var(--cream);font-weight:600;}
+
+  /* ============ CLOSING ============ */
+  .closing{
+    text-align:center;
+    padding:120px 24px 80px;
+    background:
+      radial-gradient(ellipse 700px 400px at 50% 100%, rgba(255,79,163,0.12), transparent 60%);
+  }
+  .closing .kicker{margin-bottom:20px;}
+  .closing h2{
+    font-size:clamp(30px,5vw,50px);
+    font-weight:700;
+    max-width:640px;
+    margin:0 auto;
+    line-height:1.2;
+  }
+  .closing h2 .neon{color:var(--pink);font-style:italic;}
+  .closing h2 .lone{color:var(--orange-light);}
+
+  footer{
+    max-width:1080px;
+    margin:0 auto;
+    padding:40px 24px 80px;
+    color:var(--muted);
+    font-size:10.5px;
+    line-height:1.8;
+    border-top:1px solid var(--hair);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  footer a{color:var(--muted);text-decoration:underline;}
+
+  @media (max-width:640px){
+    .moment{grid-template-columns:1fr;gap:6px;}
+    .stat{padding:22px 10px;}
+    .countdown{gap:16px;}
+  }
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Zum Inhalt</a>
 
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="USA 2026 Startseite">USA<span>26</span></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menü</button>
-    <nav class="nav" id="nav" aria-label="Hauptnavigation">
-      <a href="#route">Route</a>
-      <a href="#austin">Texas</a>
-      <a href="#essentials">BBQ & Hotels</a>
-      <a href="#budget">Budget</a>
-      <a class="nav-cta" href="#join">Wer kommt mit?</a>
-    </nav>
-  </header>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="kicker mono tracked">Friedolin &amp; Laura · 25.08.–10.09.2026</div>
+  <h1 class="hero-title">
+    <span class="neon">Neon</span>
+    <span class="lone">&amp; Lone Star</span>
+  </h1>
+  <p class="hero-sub">Von den Lichtern des Strip bis zum Kickoff in Austin — 17 Tage, zwei Welten, eine Route quer durch Nevada und Texas.</p>
+  <div class="hero-dates mono">FRANKFURT → LAS VEGAS → TEXAS → LAS VEGAS → FRANKFURT</div>
+  <div class="countdown" id="countdown">
+    <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Tage</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">Std.</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cd-mins">—</div><div class="cd-label">Min.</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cd-secs">—</div><div class="cd-label">Sek.</div></div>
+  </div>
+  <div class="scroll-hint mono">Scroll für die Route ↓</div>
+</section>
 
-  <main id="main">
-    <section class="hero chapter" aria-labelledby="hero-title">
-      <img class="chapter-image" src="assets/hero.svg" alt="Las Vegas bei Nacht vor der Wüste">
-      <div class="chapter-shade hero-shade"></div>
-      <div class="hero-content wrap">
-        <p class="eyebrow">26.08. — 10.09.2026</p>
-        <h1 id="hero-title">Vegas lights.<br>Texas roads.<br><em>Wir mittendrin.</em></h1>
-        <p class="hero-lead">Palazzo-Pool. Legendäres BBQ. Leere Landstraßen. Live Music. NASA. Und genug Zeit, das alles wirklich zu genießen.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#route">Die Reise erleben</a>
-          <a class="button ghost" href="#join">Ich könnte dabei sein</a>
-        </div>
-      </div>
-      <div class="hero-meta" aria-label="Reisedaten">
-        <span><b>15</b> Tage</span>
-        <span><b>7</b> Etappen</span>
-        <span><b>2</b> Welten</span>
-      </div>
-      <a class="scroll-cue" href="#why" aria-label="Weiter">Scroll</a>
-    </section>
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="stat"><div class="stat-num mono">17</div><div class="stat-label mono">Tage unterwegs</div></div>
+  <div class="stat"><div class="stat-num mono">2</div><div class="stat-label mono">Bundesstaaten</div></div>
+  <div class="stat"><div class="stat-num mono">6</div><div class="stat-label mono">Stationen</div></div>
+  <div class="stat"><div class="stat-num mono">1</div><div class="stat-label mono">Rodeo</div></div>
+  <div class="stat"><div class="stat-num mono">1</div><div class="stat-label mono">Kickoff</div></div>
+  <div class="stat"><div class="stat-num mono">~800 km</div><div class="stat-label mono">Texas-Roadtrip</div></div>
+</section>
 
-    <section class="manifesto section section-light" id="why">
-      <div class="wrap manifesto-grid">
-        <p class="kicker">Warum genau diese Reise?</p>
-        <div>
-          <h2>Nicht alles sehen.<br><em>Das Richtige erleben.</em></h2>
-          <p class="manifesto-lead">Kein Sehenswürdigkeiten-Marathon. Kein täglicher Hotelwechsel. Kein Urlaub, von dem man Urlaub braucht.</p>
-        </div>
-        <div class="manifesto-copy">
-          <p>Wir verbinden das Beste aus zwei Welten: Las Vegas für große Momente und Texas für alles, was echt ist.</p>
-          <p>Gute Hotels, gutes Essen, ein entspannter Roadtrip und wenige Highlights, an die wir uns Jahre später noch erinnern.</p>
-        </div>
-      </div>
-      <div class="wrap promise-strip" aria-label="Reiseversprechen">
-        <span>Premiumgefühl</span><span>BBQ</span><span>Natur</span><span>Live Music</span><span>NASA</span><span>Shopping</span>
-      </div>
-    </section>
+<!-- ============ CHAPTER I — VEGAS ANKUNFT ============ -->
+<section class="chapter vegas">
+  <div class="chapter-eyebrow"><span class="roman mono">Kapitel I</span><span class="line"></span><span class="mono">Las Vegas</span></div>
+  <h2 class="chapter-title">Ankunft in der <em>Neon-Welt</em></h2>
+  <div class="chapter-dates mono">25.08. – 28.08.2026</div>
+  <p class="chapter-lede">Non-Stop von Frankfurt über den Atlantik, direkt in die gleißende Kulisse des Strip. Drei Tage Las Vegas, bevor es weiter Richtung Texas geht.</p>
 
-    <section class="route-section section" id="route">
-      <div class="wrap route-head">
-        <p class="kicker">Die Route</p>
-        <h2>Von Neon zu NASA.<br><em>Und zurück.</em></h2>
-        <p>Las Vegas liegt bewusst unter der Woche. Texas bekommt den Raum, den es verdient.</p>
-      </div>
-      <div class="route-scroll" tabindex="0" aria-label="Reiseroute horizontal scrollen">
-        <div class="route-line" aria-hidden="true"></div>
-        <a class="route-stop active" href="#vegas-start"><i></i><span>26.–28.08.</span><strong>Las Vegas</strong><small>Der Auftakt</small></a>
-        <a class="route-stop" href="#austin"><i></i><span>28.08.–01.09.</span><strong>Austin</strong><small>Vier Nächte</small></a>
-        <a class="route-stop" href="#hill-country"><i></i><span>01.–03.09.</span><strong>Hill Country</strong><small>Tempo raus</small></a>
-        <a class="route-stop" href="#san-antonio"><i></i><span>03.–05.09.</span><strong>San Antonio</strong><small>River Walk</small></a>
-        <a class="route-stop" href="#houston"><i></i><span>05.–07.09.</span><strong>Houston</strong><small>NASA</small></a>
-        <a class="route-stop" href="#austin-return"><i></i><span>07.–08.09.</span><strong>Austin</strong><small>Lieblingsabend</small></a>
-        <a class="route-stop" href="#vegas-finale"><i></i><span>08.–10.09.</span><strong>Las Vegas</strong><small>Das Finale</small></a>
-      </div>
-    </section>
+  <div class="fig">
+    <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Las_Vegas_Strip_lights_at_night.jpg?width=1600" alt="Las Vegas Strip bei Nacht" loading="lazy"></div>
+    <figcaption><span>Kap. I — Ankunft am Strip</span><span>Las Vegas, NV</span></figcaption>
+  </div>
 
-    <section class="destination chapter" id="vegas-start">
-      <img class="chapter-image" src="assets/vegas-start.svg" alt="Las Vegas mit Pool und leuchtender Skyline" loading="lazy">
-      <div class="chapter-shade"></div>
-      <div class="chapter-content wrap reveal">
-        <p class="chapter-number">01 / Las Vegas</p>
-        <h2>Groß ankommen.<br><em>Langsam starten.</em></h2>
-        <p class="chapter-lead">Zwei Nächte im Palazzo. Pool statt Programmstress. Sphere, Shopping und das erste Dinner, das sich nach Urlaub anfühlt.</p>
-        <div class="moment-list"><span>Palazzo</span><span>Pool</span><span>Sphere</span><span>Premium Dinner</span></div>
-      </div>
-    </section>
+  <div class="moment-list">
+    <div class="moment"><div class="moment-date mono">Tag 1</div><div class="moment-body"><h3>Landung &amp; erste Runde Strip</h3><p>Direktflug Frankfurt – Las Vegas, Check-in im Palazzo direkt am Strip. Abends die Fountains of Bellagio, ein erster Absacker mit Blick auf die Skyline.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Tag 2</div><div class="moment-body"><h3>Pool &amp; Downtown</h3><p>Vormittags Pool-Zeit, abends Fremont Street Downtown mit der berühmten LED-Überdachung — oder eine Show nach Lust und Laune.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Tag 3</div><div class="moment-body"><h3>Valley of Fire &amp; Hoover Dam <span class="highlight-badge">Ausflug</span></h3><p>Rote Sandsteinformationen eine Autostunde nordöstlich der Stadt, danach der monumentale Hoover Dam am Lake Mead — Wüste und Ingenieurskunst an einem Tag.</p></div></div>
+  </div>
 
-    <section class="destination editorial-split section-light" id="austin">
-      <div class="editorial-image"><img src="assets/austin.svg" alt="Austin mit Skyline, Musik und BBQ" loading="lazy"></div>
-      <div class="editorial-copy reveal">
-        <p class="chapter-number">02 / Austin</p>
-        <h2>Eine Stadt mit<br><em>eigenem Takt.</em></h2>
-        <p class="large-copy">Morgens South Congress. Mittags Brisket. Nachmittags Barton Springs. Abends Musik, die nicht für Touristen gespielt wird.</p>
-        <div class="day-notes">
-          <p><b>Eat</b> Franklin, InterStellar, Terry Black's</p>
-          <p><b>Feel</b> Barton Springs, Rooftops, Downtown</p>
-          <p><b>Hear</b> Live Music ohne festen Zeitplan</p>
-        </div>
-      </div>
-    </section>
+  <div class="pull-quote">„Man landet in einer anderen Zeitzone und einer komplett anderen Welt — und drei Tage später steigt man in einen Mustang und fährt nach Texas."</div>
+</section>
 
-    <section class="destination chapter" id="hill-country">
-      <img class="chapter-image" src="assets/hill-country.svg" alt="Landstraße im Texas Hill Country bei Sonnenuntergang" loading="lazy">
-      <div class="chapter-shade warm"></div>
-      <div class="chapter-content wrap reveal">
-        <p class="chapter-number">03 / Hill Country</p>
-        <h2>Fenster runter.<br><em>Tempo raus.</em></h2>
-        <p class="chapter-lead">Zwei Tage zwischen Fredericksburg, Weingütern und Enchanted Rock. Keine Checkliste. Nur eine gute Straße und Zeit für spontane Stopps.</p>
-        <div class="moment-list"><span>Scenic Drives</span><span>Boutique Hotel</span><span>Wine Country</span><span>Enchanted Rock</span></div>
-      </div>
-    </section>
+<!-- ============ CHAPTER II — HILL COUNTRY & RODEO ============ -->
+<section class="chapter texas">
+  <div class="chapter-eyebrow"><span class="roman mono">Kapitel II</span><span class="line"></span><span class="mono">Texas Hill Country</span></div>
+  <h2 class="chapter-title">Deutsche Wurzeln, <em>texanischer Sattel</em></h2>
+  <div class="chapter-dates mono">28.08. – 29.08.2026</div>
+  <p class="chapter-lede">Weiterflug nach Austin, Mustang-Übergabe, und rein in die Hill Country — jenes Fleckchen Texas, das deutsche Einwanderer im 19. Jahrhundert geprägt haben.</p>
 
-    <section class="destination editorial-split reverse section-light" id="san-antonio">
-      <div class="editorial-image"><img src="assets/san-antonio.svg" alt="San Antonio River Walk am Abend" loading="lazy"></div>
-      <div class="editorial-copy reveal">
-        <p class="chapter-number">04 / San Antonio</p>
-        <h2>Texas erzählt<br><em>seine Geschichte.</em></h2>
-        <p class="large-copy">Alamo am Tag. Pearl District am Nachmittag. Tex-Mex und ein langer Abend direkt am River Walk.</p>
-        <div class="pull-quote">„Genau die richtige Mischung aus Geschichte, Atmosphäre und einem Abend ohne Eile.“</div>
-      </div>
-    </section>
+  <div class="moment-list">
+    <div class="moment"><div class="moment-date mono">Tag 4</div><div class="moment-body"><h3>Austin — Ankunft &amp; Mietwagen</h3><p>Landung in Austin, Übernahme des Ford Mustang für die komplette Texas-Etappe. Erste Nacht mitten in der Live-Music-Capital of the World.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Tag 5</div><div class="moment-body"><h3>Fredericksburg &amp; Luckenbach</h3><p>Fachwerkhäuser, Weingüter und deutsche Bäckereien mitten in Texas — Fredericksburg wurde 1846 von deutschen Siedlern gegründet. Danach ein Abstecher ins winzige Luckenbach, berühmt durch Waylon Jennings' Country-Hymne.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Abend</div><div class="moment-body"><h3>Tejas Rodeo Company <span class="highlight-badge">Highlight</span></h3><p>Live-Rodeo mit Bull Riding, Barrel Racing und Steakhouse-Dinner in Bulverde — der volle „Yeehaw"-Abend inklusive Live-Band und Two-Step-Tanzfläche bis Mitternacht.</p></div></div>
+  </div>
 
-    <section class="destination chapter" id="houston">
-      <img class="chapter-image" src="assets/houston.svg" alt="Saturn V, Mission Control und Houston Skyline" loading="lazy">
-      <div class="chapter-shade"></div>
-      <div class="chapter-content wrap reveal">
-        <p class="chapter-number">05 / Houston</p>
-        <h2>Ein Tag,<br><em>der größer ist.</em></h2>
-        <p class="chapter-lead">Space Center Houston. Mission Control. Saturn V. Der Moment, in dem diese Reise nicht nur gut, sondern unvergesslich wird.</p>
-        <div class="moment-list"><span>Space Center</span><span>Mission Control</span><span>Saturn V</span><span>Astros optional</span></div>
-      </div>
-    </section>
+  <div class="fig">
+    <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/101022-F-3431H-989_Robson_Palermo_a_professional_bull_rider_gets_thrown_from_a_bull_during_the_Professional_Bull_Riding_Finals_at_the_Thomas_and_Mack_Center,.jpg?width=1600" alt="Bull Riding beim Rodeo" loading="lazy"></div>
+    <figcaption><span>Kap. II — Acht Sekunden auf dem Bullen</span><span>Bulverde, TX</span></figcaption>
+  </div>
+</section>
 
-    <section class="destination editorial-split section-light" id="austin-return">
-      <div class="editorial-image"><img src="assets/austin-return.svg" alt="Roadtrip zurück nach Austin" loading="lazy"></div>
-      <div class="editorial-copy reveal">
-        <p class="chapter-number">06 / Austin Return</p>
-        <h2>Noch einmal<br><em>Lieblingsstadt.</em></h2>
-        <p class="large-copy">Kein Pflichtprogramm. Noch ein BBQ. Noch ein Song. Noch ein Abend, der genau so wird, wie wir ihn unterwegs entscheiden.</p>
-        <div class="route-fact"><strong>265 km</strong><span>Houston → Austin</span></div>
-      </div>
-    </section>
+<!-- ============ CHAPTER III — SAN ANTONIO ============ -->
+<section class="chapter texas">
+  <div class="chapter-eyebrow"><span class="roman mono">Kapitel III</span><span class="line"></span><span class="mono">San Antonio</span></div>
+  <h2 class="chapter-title">Wo Texas <em>Geschichte schrieb</em></h2>
+  <div class="chapter-dates mono">29.08. – 31.08.2026</div>
+  <p class="chapter-lede">The Alamo, der River Walk und das Pearl District — San Antonio verbindet texanische Gründungsgeschichte mit einer der schönsten Flusspromenaden der USA.</p>
 
-    <section class="destination chapter" id="vegas-finale">
-      <img class="chapter-image" src="assets/vegas-finale.svg" alt="Las Vegas als elegantes Reisefinale" loading="lazy">
-      <div class="chapter-shade"></div>
-      <div class="chapter-content wrap reveal">
-        <p class="chapter-number">07 / Las Vegas Finale</p>
-        <h2>Noch zwei Tage.<br><em>Alles richtig gemacht.</em></h2>
-        <p class="chapter-lead">Zurück ins Palazzo. Pool, Shopping, eine Show und das letzte Dinner mit Blick auf den Strip. Rückflug am 10. September.</p>
-        <div class="moment-list"><span>Werktage</span><span>Shopping</span><span>Show Night</span><span>Farewell Dinner</span></div>
-      </div>
-    </section>
+  <div class="fig">
+    <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/San_Antonio_River_Walk_July_2017_06_(Casa_Rio).jpg?width=1600" alt="San Antonio River Walk" loading="lazy"></div>
+    <figcaption><span>Kap. III — Am River Walk</span><span>San Antonio, TX</span></figcaption>
+  </div>
 
-    <section class="essentials section section-dark" id="essentials">
-      <div class="wrap essentials-head">
-        <p class="kicker">Die Dinge, die zählen</p>
-        <h2>Gute Reise.<br><em>Sehr gute Details.</em></h2>
-      </div>
-      <div class="wrap story-cards">
-        <article class="story-card reveal">
-          <span>01 / BBQ</span>
-          <h3>Brisket ist kein Programmpunkt.</h3>
-          <p>Es ist ein Grund für diese Reise. Franklin, InterStellar und Terry Black's in Austin. Truth BBQ in Houston.</p>
-          <strong>Die Pflichtauswahl</strong>
-        </article>
-        <article class="story-card reveal">
-          <span>02 / Hotels</span>
-          <h3>Schön wohnen. Zentral bleiben.</h3>
-          <p>Palazzo in Las Vegas. Hochwertig in Downtown Austin. Boutique im Hill Country. River Walk in San Antonio.</p>
-          <strong>Premium ohne Unsinn</strong>
-        </article>
-        <article class="story-card reveal">
-          <span>03 / Abende</span>
-          <h3>Fixpunkte, aber kein Stundenplan.</h3>
-          <p>Eine große Show. Ein besonderes Dinner. Zwei Musikabende. Dazwischen bleibt Platz für die beste Idee des Tages.</p>
-          <strong>Reserviert, nicht verplant</strong>
-        </article>
-      </div>
-    </section>
+  <div class="moment-list">
+    <div class="moment"><div class="moment-date mono">Tag 6</div><div class="moment-body"><h3>The Alamo &amp; River Walk</h3><p>Die historische Mission, Schauplatz der berühmten Belagerung von 1836, dann hinunter an den River Walk — Boote, Cafés und Palmen unterhalb des Straßenniveaus.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Abend</div><div class="moment-body"><h3>Pearl District</h3><p>Die ehemalige Brauerei-Anlage ist heute Szeneviertel mit Boutiquen, Craft-Bars und einem der besten Farmers Markets der Stadt.</p></div></div>
+  </div>
+</section>
 
-    <section class="budget section" id="budget">
-      <div class="wrap budget-layout">
-        <div class="budget-intro reveal">
-          <p class="kicker">Budget</p>
-          <h2>Premium.<br><em>Nicht verschwenderisch.</em></h2>
-          <p>Premium Economy, hochwertige Hotels und gutes Essen. Wir optimieren Preis und Erlebnis – nicht den letzten Euro.</p>
-        </div>
-        <div class="budget-visual reveal" aria-label="Budgetrahmen für zwei Personen">
-          <span>Realer Zielkorridor für 2 Personen</span>
-          <strong>11.500–12.800 €</strong>
-          <p>inklusive Flügen, Hotels, Mietwagen, Essen, Shows und Eintritten</p>
-          <div class="budget-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-          <small>Der größte Hebel bleibt der Preis der Premium-Economy-Flüge.</small>
-        </div>
-      </div>
-    </section>
+<!-- ============ CHAPTER IV — HOUSTON & SPACE CENTER ============ -->
+<section class="chapter texas">
+  <div class="chapter-eyebrow"><span class="roman mono">Kapitel IV</span><span class="line"></span><span class="mono">Houston</span></div>
+  <h2 class="chapter-title">Elf Meter <em>Mondrakete</em></h2>
+  <div class="chapter-dates mono">31.08. – 03.09.2026</div>
+  <p class="chapter-lede">Über Lockhart — Texas' inoffizielle BBQ-Hauptstadt — weiter nach Houston, wo Amerikas bemannte Raumfahrt bis heute ihre Kommandozentrale hat.</p>
 
-    <section class="join-section chapter" id="join">
-      <img class="chapter-image" src="assets/join.svg" alt="Freunde an einem Aussichtspunkt über einer Wüstenstraße" loading="lazy">
-      <div class="chapter-shade join-shade"></div>
-      <div class="join-content wrap reveal">
-        <p class="kicker">Wer kommt mit?</p>
-        <h2>15 Tage.<br><em>Eine verdammt gute Geschichte.</em></h2>
-        <p>Was wäre dein Grund, dabei zu sein?</p>
-        <form class="vote-form" id="voteForm">
-          <div class="vote-options" role="group" aria-label="Interessen auswählen">
-            <label><input type="checkbox" name="interest" value="BBQ"><span>BBQ</span></label>
-            <label><input type="checkbox" name="interest" value="NASA"><span>NASA</span></label>
-            <label><input type="checkbox" name="interest" value="Las Vegas"><span>Las Vegas</span></label>
-            <label><input type="checkbox" name="interest" value="Natur"><span>Natur</span></label>
-            <label><input type="checkbox" name="interest" value="Live Music"><span>Live Music</span></label>
-            <label><input type="checkbox" name="interest" value="Shopping"><span>Shopping</span></label>
-          </div>
-          <button class="button primary" type="submit">Ich sehe mich da</button>
-          <p class="form-message" id="formMessage" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-  </main>
+  <div class="moment-list">
+    <div class="moment"><div class="moment-date mono">unterwegs</div><div class="moment-body"><h3>BBQ-Stopp in Lockhart</h3><p>Auf dem Weg nach Houston ein Zwischenstopp in der „BBQ Capital of Texas" — Brisket direkt vom Holzkohle-Smoker.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Tag 8</div><div class="moment-body"><h3>Space Center Houston <span class="highlight-badge">Highlight</span></h3><p>NASA Johnson Space Center: originale Saturn-V-Rakete, Mission Control von Apollo 11 und eine Tram-Tour durchs aktive Trainingsgelände der Astronauten.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Tag 9</div><div class="moment-body"><h3>Museum District</h3><p>Ein ruhiger Tag zwischen Houstons Museen und dem weitläufigen Hermann Park, bevor es zurück Richtung Austin geht.</p></div></div>
+  </div>
 
-  <footer>
-    <div class="wrap footer-inner">
-      <a class="brand" href="#top">USA<span>26</span></a>
-      <p>Las Vegas → Austin → Hill Country → San Antonio → Houston → Austin → Las Vegas</p>
-      <a href="#top">Nach oben ↑</a>
+  <div class="fig">
+    <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Saturn_V_Rocket_--_Johnson_Space_Center.jpg?width=1600" alt="Saturn V Rakete im Space Center Houston" loading="lazy"></div>
+    <figcaption><span>Kap. IV — 111 Meter Mondrakete</span><span>Space Center Houston, TX</span></figcaption>
+  </div>
+</section>
+
+<!-- ============ CHAPTER V — AUSTIN GAME DAY ============ -->
+<section class="chapter texas">
+  <div class="chapter-eyebrow"><span class="roman mono">Kapitel V</span><span class="line"></span><span class="mono">Austin</span></div>
+  <h2 class="chapter-title">Hunderttausend Stimmen, <em>ein Kickoff</em></h2>
+  <div class="chapter-dates mono">03.09. – 07.09.2026</div>
+  <p class="chapter-lede">Zurück in Austin für das große Finale der Texas-Etappe: Live-Musik auf der 6th Street, Barton Springs — und ein Uni-Football-Spiel vor einem der größten Stadien Amerikas.</p>
+
+  <div class="moment-list">
+    <div class="moment"><div class="moment-date mono">unterwegs</div><div class="moment-body"><h3>Zweiter BBQ-Stopp Lockhart</h3><p>Auf der Rückfahrt gibt's noch einmal Brisket, Ribs und Sausage — dieses Mal bei einem der anderen legendären Lockhart-Smokehouses.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Tag 11</div><div class="moment-body"><h3>State Capitol &amp; South Congress</h3><p>Das State Capitol thront höher als das in Washington D.C., South Congress ist Austins buntester Boulevard für Boutiquen, Food Trucks und Streetart.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Game Day</div><div class="moment-body"><h3>Texas Longhorns Kickoff <span class="highlight-badge">Highlight</span></h3><p>Saisonauftakt der Texas Longhorns im Darrell K Royal – Texas Memorial Stadium, einem der größten College-Football-Stadien der USA. Tailgating am Vormittag, Anpfiff am Nachmittag, Burnt-Orange so weit das Auge reicht.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Ausklang</div><div class="moment-body"><h3>Barton Springs &amp; Franklin Barbecue</h3><p>Ein natürlich gespeistes Freibad mitten in der Stadt — und, wer früh genug aufsteht, das wohl meistgerühmte Brisket von ganz Texas bei Franklin Barbecue.</p></div></div>
+  </div>
+
+  <div class="fig">
+    <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/University_of_Texas_vs._Florida_Atlantic_football_game_Panorama_@_Darrell_K_Royal_Texas_Memorial_Stadium.jpg?width=1600" alt="Darrell K Royal Texas Memorial Stadium" loading="lazy"></div>
+    <figcaption><span>Kap. V — Game Day in Burnt Orange</span><span>Austin, TX</span></figcaption>
+  </div>
+</section>
+
+<!-- ============ CHAPTER VI — VEGAS FINALE ============ -->
+<section class="chapter vegas">
+  <div class="chapter-eyebrow"><span class="roman mono">Kapitel VI</span><span class="line"></span><span class="mono">Las Vegas</span></div>
+  <h2 class="chapter-title">Zurück in die <em>Neon-Welt</em></h2>
+  <div class="chapter-dates mono">07.09. – 10.09.2026</div>
+  <p class="chapter-lede">Der Mustang geht zurück nach Austin, der letzte Flug bringt uns zurück nach Vegas — für einen letzten großen Ausflug und einen ganz besonderen Kinoabend.</p>
+
+  <div class="moment-list">
+    <div class="moment"><div class="moment-date mono">Tag 14</div><div class="moment-body"><h3>Grand Canyon West Rim <span class="highlight-badge">Highlight</span></h3><p>Der Skywalk über dem 1.200 Meter tiefen Canyon — eine Glasplattform, die weit über den Abgrund hinausragt. Rund zweieinhalb Stunden Fahrt ab Vegas, ein unvergesslicher Ausblick.</p></div></div>
+    <div class="moment"><div class="moment-date mono">The Sphere</div><div class="moment-body"><h3>The Wizard of Oz im Sphere <span class="highlight-badge">Highlight</span></h3><p>Die vielleicht spektakulärste Leinwand der Welt: 160.000 Quadratfuß Display, das den kompletten Innenraum umschließt, plus Wind-, Duft- und Bewegungseffekte — Dorothys Reise nach Oz wie man sie noch nie gesehen hat.</p></div></div>
+    <div class="moment"><div class="moment-date mono">Tag 16</div><div class="moment-body"><h3>Letzter Vegas-Tag</h3><p>Pool, Strip, vielleicht noch eine Runde am Spieltisch — bevor es am nächsten Morgen zurück nach Frankfurt geht.</p></div></div>
+  </div>
+
+  <div class="fig">
+    <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Grand_Canyon_West_Rim_09_2017_4844.jpg?width=1600" alt="Grand Canyon West Rim" loading="lazy"></div>
+    <figcaption><span>Kap. VI — 1.200 Meter Tiefblick</span><span>Grand Canyon West, AZ</span></figcaption>
+  </div>
+</section>
+
+<!-- ============ RESTAURANT GUIDE ============ -->
+<section class="guide">
+  <div class="guide-inner">
+    <div class="guide-head">
+      <div class="kicker mono tracked">Insider-Guide</div>
+      <h2>Wo wir <em>essen</em> werden</h2>
     </div>
-  </footer>
+
+    <div class="station-block">
+      <div class="station-head"><h3><span class="texas-tag">●</span> Hill Country / Bulverde</h3><span class="sh-sub mono">28.–29.08.</span></div>
+      <div class="rcards">
+        <div class="rcard"><div class="rtype">BBQ</div><div class="rname">True Texas BBQ</div><div class="rdesc">Spring Branch, gleich um die Ecke vom Rodeo-Gelände. Klassisches Central-Texas-Brisket, nach Gewicht serviert.</div></div>
+        <div class="rcard"><div class="rtype">Alltagsküche</div><div class="rname">Hatch Cafe &amp; Bistro</div><div class="rdesc">Entspanntes Frühstücks- &amp; Mittagscafé in Bulverde — perfekt für einen unkomplizierten Stopp zwischen den Programmpunkten.</div></div>
+        <div class="rcard"><div class="rtype">Etwas Besonderes</div><div class="rname">Cabernet Grill</div><div class="rdesc">Texas Wine Country Restaurant in Fredericksburg — Steakhouse-Klasse kombiniert mit Weinen aus der Region.</div></div>
+      </div>
+    </div>
+
+    <div class="station-block">
+      <div class="station-head"><h3><span class="texas-tag">●</span> San Antonio</h3><span class="sh-sub mono">29.–31.08.</span></div>
+      <div class="rcards">
+        <div class="rcard"><div class="rtype">BBQ</div><div class="rname">Pinkerton's Barbecue</div><div class="rdesc">Downtown, fußläufig vom River Walk — eines der bestbewerteten Barbecue-Häuser der Stadt.</div></div>
+        <div class="rcard"><div class="rtype">Alltagsküche</div><div class="rname">Down on Grayson</div><div class="rdesc">Lockeres Food-Hall-Konzept nahe dem Pearl District, ideal für einen entspannten Abend nach dem Sightseeing.</div></div>
+        <div class="rcard"><div class="rtype">Etwas Besonderes</div><div class="rname">Bliss Restaurant</div><div class="rdesc">Gehobene Fine-Dining-Adresse der Stadt — die richtige Wahl für einen besonderen Abend.</div></div>
+      </div>
+    </div>
+
+    <div class="station-block">
+      <div class="station-head"><h3><span class="texas-tag">●</span> Houston</h3><span class="sh-sub mono">31.08.–03.09.</span></div>
+      <div class="rcards">
+        <div class="rcard"><div class="rtype">BBQ</div><div class="rname">The Pit Room</div><div class="rdesc">Nahe dem Museum District, moderne Central-Texas-BBQ mit Kultstatus unter Houstoniern.</div></div>
+        <div class="rcard"><div class="rtype">Alltagsküche</div><div class="rname">Barnaby's Cafe</div><div class="rdesc">Familienfreundliches Café-Konzept direkt am Hermann Park — entspannt zwischen zwei Museumsbesuchen.</div></div>
+        <div class="rcard"><div class="rtype">Etwas Besonderes</div><div class="rname">State of Grace</div><div class="rdesc">Elegante Adresse mit Blick auf den Buffalo Bayou — gehobene amerikanische Küche für den besonderen Abend.</div></div>
+      </div>
+    </div>
+
+    <div class="station-block">
+      <div class="station-head"><h3><span class="texas-tag">●</span> Austin</h3><span class="sh-sub mono">28.08. &amp; 03.–07.09.</span></div>
+      <div class="rcards">
+        <div class="rcard"><div class="rtype">BBQ</div><div class="rname">Terry Black's Barbecue</div><div class="rdesc">Nahe Rainey Street/Barton Springs Rd — die perfekte Ergänzung zu Franklin Barbecue, das ohnehin schon auf dem Programm steht.</div></div>
+        <div class="rcard"><div class="rtype">Alltagsküche</div><div class="rname">Banger's Sausage House &amp; Beer Garden</div><div class="rdesc">Mitten auf der Rainey Street — Biergarten-Feeling mit riesiger Craft-Beer-Auswahl.</div></div>
+        <div class="rcard"><div class="rtype">Etwas Besonderes</div><div class="rname">Hestia</div><div class="rdesc">Live-Feuer-Küche im Herzen von Downtown — eine der gefragtesten Adressen der Stadt, ideal für den Game-Day-Abend.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BORDBUCH ============ -->
+<section class="bordbuch">
+  <div class="bordbuch-head">
+    <div class="kicker mono tracked">Bordbuch</div>
+    <h2>Die Route <em>Tag für Tag</em></h2>
+  </div>
+  <table class="bb-table">
+    <tr class="bb-vegas"><td class="bb-date mono">25.08.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what"><b>Frankfurt → Las Vegas</b> — Ankunft am Strip, Check-in Palazzo</td></tr>
+    <tr class="bb-vegas"><td class="bb-date mono">26.08.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Pool-Tag, abends Fremont Street</td></tr>
+    <tr class="bb-vegas"><td class="bb-date mono">27.08.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Valley of Fire &amp; Hoover Dam</td></tr>
+    <tr class="bb-vegas"><td class="bb-date mono">28.08.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what"><b>Weiter nach Austin</b> — Mietwagen-Übernahme</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">29.08.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Fredericksburg &amp; Luckenbach, abends <b>Tejas Rodeo</b></td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">30.08.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what"><b>San Antonio</b> — The Alamo, River Walk, Pearl District</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">31.08.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Weiter nach Houston, BBQ-Stopp Lockhart</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">01.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what"><b>Space Center Houston</b> — NASA Tram Tour</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">02.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Houston Museum District</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">03.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Zurück nach Austin, zweiter BBQ-Stopp Lockhart</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">04.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">State Capitol, South Congress, Barton Springs</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">05.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what"><b>Texas Longhorns Kickoff</b> — Darrell K Royal Stadium</td></tr>
+    <tr class="bb-texas"><td class="bb-date mono">06.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Franklin Barbecue &amp; Hamilton Pool</td></tr>
+    <tr class="bb-vegas"><td class="bb-date mono">07.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what"><b>Zurück nach Las Vegas</b></td></tr>
+    <tr class="bb-vegas"><td class="bb-date mono">08.–09.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what"><b>Grand Canyon West Rim</b> &amp; <b>The Sphere: Wizard of Oz</b></td></tr>
+    <tr class="bb-vegas"><td class="bb-date mono">10.09.</td><td class="bb-tag"><span class="sq"></span></td><td class="bb-what">Las Vegas → Frankfurt</td></tr>
+  </table>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing">
+  <div class="kicker mono tracked">Siebzehn Tage</div>
+  <h2><span class="neon">Neon</span>-Lichter, <span class="lone">Lone-Star</span>-Weiten — und wir zwei mittendrin.</h2>
+</section>
+
+<footer class="mono">
+  Neon &amp; Lone Star · Friedolin &amp; Laura, USA-Roadtrip 2026<br>
+  Fotos via <a href="https://commons.wikimedia.org">Wikimedia Commons</a>:
+  <a href="https://commons.wikimedia.org/wiki/File:Las_Vegas_Strip_lights_at_night.jpg">Strip</a> (CC BY-SA 4.0) ·
+  <a href="https://commons.wikimedia.org/wiki/File:101022-F-3431H-989_Robson_Palermo_a_professional_bull_rider_gets_thrown_from_a_bull_during_the_Professional_Bull_Riding_Finals_at_the_Thomas_and_Mack_Center,.jpg">Rodeo</a> (U.S. Air Force, Public Domain) ·
+  <a href="https://commons.wikimedia.org/wiki/File:San_Antonio_River_Walk_July_2017_06_(Casa_Rio).jpg">River Walk</a> (Michael Barera, CC BY-SA 4.0) ·
+  <a href="https://commons.wikimedia.org/wiki/File:Saturn_V_Rocket_--_Johnson_Space_Center.jpg">Saturn V</a> ·
+  <a href="https://commons.wikimedia.org/wiki/File:University_of_Texas_vs._Florida_Atlantic_football_game_Panorama_@_Darrell_K_Royal_Texas_Memorial_Stadium.jpg">Stadion</a> ·
+  <a href="https://commons.wikimedia.org/wiki/File:Grand_Canyon_West_Rim_09_2017_4844.jpg">Grand Canyon</a>
+  — Lizenzdetails jeweils auf der verlinkten Dateiseite.
+</footer>
+
+<script>
+  // Countdown zum Abflug: 25.08.2026, 12:40 Uhr MESZ (UTC+2)
+  var target = new Date("2026-08-25T12:40:00+02:00").getTime();
+  function tick(){
+    var now = new Date().getTime();
+    var diff = target - now;
+    if(diff <= 0){
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hours').textContent = '0';
+      document.getElementById('cd-mins').textContent = '0';
+      document.getElementById('cd-secs').textContent = '0';
+      return;
+    }
+    var d = Math.floor(diff / (1000*60*60*24));
+    var h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    var m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    var s = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Fehlende Bilder: Rahmen sauber ausblenden statt Broken-Image-Icon
+  document.querySelectorAll('.fig img').forEach(function(img){
+    img.addEventListener('error', function(){
+      var f = img.closest('.fig');
+      if(f) f.style.display = 'none';
+    });
+  });
+</script>
+
 </body>
 </html>
