@@ -358,6 +358,85 @@
     .stay-photo{min-height:180px;}
   }
 
+  /* ============ HOTEL-GALERIE ============ */
+  .stay-gallery{
+    display:flex;
+    flex-direction:column;
+    background:var(--bg-panel-2);
+    min-height:210px;
+  }
+  .gallery-main{
+    position:relative;
+    flex:1;
+    min-height:170px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,110,180,0.10), transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(228,150,80,0.10), transparent 60%),
+      var(--bg-panel-2);
+    overflow:hidden;
+  }
+  .gallery-main img{
+    position:absolute;inset:0;
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(0.92) contrast(1.03);
+    opacity:0;
+    transition:opacity .45s ease;
+  }
+  .gallery-main img.active{opacity:1;}
+  .gallery-main .glyph{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    font-size:44px;opacity:0.3;pointer-events:none;
+    transition:opacity .3s ease;
+  }
+  .gallery-main.has-img .glyph{opacity:0;}
+  .gallery-caption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:8px 12px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;letter-spacing:0.04em;
+    color:var(--cream);
+    background:linear-gradient(to top, rgba(15,16,19,0.82), transparent);
+    opacity:0;transition:opacity .3s ease;
+  }
+  .gallery-main.has-img .gallery-caption{opacity:1;}
+  .gallery-thumbs{
+    display:flex;gap:6px;
+    padding:8px;
+    background:var(--bg-panel);
+    border-top:1px solid var(--hair);
+  }
+  .gallery-thumbs button{
+    flex:1;
+    padding:0;border:1px solid var(--hair);
+    border-radius:4px;overflow:hidden;
+    background:var(--bg-panel-2);
+    aspect-ratio:16/10;
+    cursor:pointer;
+    position:relative;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .gallery-thumbs button img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(0.85) contrast(1.02) brightness(0.82);
+    transition:filter .2s ease;
+  }
+  .gallery-thumbs button:hover{transform:translateY(-1px);}
+  .gallery-thumbs button.active{border-color:var(--pink);}
+  .vegas .gallery-thumbs button.active{border-color:var(--pink);}
+  .texas .gallery-thumbs button.active{border-color:var(--orange-light);}
+  .gallery-thumbs button.active img{filter:saturate(0.95) contrast(1.03) brightness(1);}
+  .gallery-thumbs button .thumb-glyph{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;opacity:0.35;
+  }
+  .gallery-thumbs button.has-img .thumb-glyph{opacity:0;}
+  @media (max-width:640px){
+    .stay-gallery{min-height:auto;}
+    .gallery-main{min-height:190px;}
+  }
+
   /* ============ RESTAURANT GUIDE ============ */
   .guide{
     background:var(--bg-panel);
@@ -540,7 +619,9 @@
   <div class="pull-quote">„Man landet in einer anderen Zeitzone und einer komplett anderen Welt — und drei Tage später steigt man in einen Mustang und fährt nach Texas."</div>
 
   <div class="stay">
-    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Palazzo%20Las%20Vegas.jpg?width=900" alt="The Palazzo at The Venetian" loading="lazy"></div>
+    <div class="stay-gallery"
+         data-images="img/palazzo-1.jpg|Fassade am Strip;img/palazzo-2.jpg|Suite;img/palazzo-3.jpg|Pool"
+         data-alt="The Palazzo at The Venetian"></div>
     <div class="stay-body">
       <div class="stay-label mono"><span class="dot-sm"></span>Unser Hotel · Las Vegas</div>
       <div class="stay-name">The Palazzo at The Venetian</div>
@@ -569,7 +650,9 @@
   </div>
 
   <div class="stay">
-    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Austin%20November%202022%2019%20(Lady%20Bird%20Lake).jpg?width=900" alt="Austin am Lady Bird Lake" loading="lazy"><span class="glyph">✦</span></div>
+    <div class="stay-gallery"
+         data-images="img/hyatt-austin-1.jpg|Am Lady Bird Lake;img/hyatt-austin-2.jpg|Lobby;img/hyatt-austin-3.jpg|Zimmer mit Lake View"
+         data-alt="Hyatt Regency Austin"></div>
     <div class="stay-body">
       <div class="stay-label mono"><span class="dot-sm"></span>Ankunftsnacht · Austin</div>
       <div class="stay-name">Hyatt Regency Austin</div>
@@ -579,7 +662,9 @@
   </div>
 
   <div class="stay">
-    <div class="stay-photo noimg"><span class="glyph">✦</span></div>
+    <div class="stay-gallery"
+         data-images="img/hyatt-sa-north-1.jpg|Außenansicht;img/hyatt-sa-north-2.jpg|Zimmer;img/hyatt-sa-north-3.jpg|Lobby"
+         data-alt="Hyatt Place San Antonio-North"></div>
     <div class="stay-body">
       <div class="stay-label mono"><span class="dot-sm"></span>Rodeo-Nacht · San Antonio Nord</div>
       <div class="stay-name">Hyatt Place San Antonio-North</div>
@@ -607,7 +692,9 @@
   </div>
 
   <div class="stay">
-    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Grand%20Hyatt%20Hotel%20in%20downtown%20San%20Antonio.jpg?width=900" alt="Grand Hyatt San Antonio" loading="lazy"></div>
+    <div class="stay-gallery"
+         data-images="img/grand-hyatt-sa-1.jpg|Downtown-Turm;img/grand-hyatt-sa-2.jpg|Rooftop-Pool;img/grand-hyatt-sa-3.jpg|Zimmer"
+         data-alt="Grand Hyatt San Antonio"></div>
     <div class="stay-body">
       <div class="stay-label mono"><span class="dot-sm"></span>Unser Hotel · San Antonio</div>
       <div class="stay-name">Grand Hyatt San Antonio</div>
@@ -636,7 +723,9 @@
   </div>
 
   <div class="stay">
-    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Houston%20Museum%20District.jpg?width=900" alt="Houston Museum District" loading="lazy"><span class="glyph">✦</span></div>
+    <div class="stay-gallery"
+         data-images="img/hyatt-houston-1.jpg|Am Museum District;img/hyatt-houston-2.jpg|Zimmer;img/hyatt-houston-3.jpg|Lobby"
+         data-alt="Hyatt Place Houston Medical Center"></div>
     <div class="stay-body">
       <div class="stay-label mono"><span class="dot-sm"></span>Unser Hotel · Houston</div>
       <div class="stay-name">Hyatt Place Houston Medical Center</div>
@@ -666,7 +755,9 @@
   </div>
 
   <div class="stay">
-    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Austin%20Texas%20skyline%202013.jpg?width=900" alt="Austin Skyline" loading="lazy"><span class="glyph">✦</span></div>
+    <div class="stay-gallery"
+         data-images="img/renaissance-austin-1.jpg|Außenansicht;img/renaissance-austin-2.jpg|Lobby-Atrium;img/renaissance-austin-3.jpg|Zimmer"
+         data-alt="Renaissance Austin Downtown"></div>
     <div class="stay-body">
       <div class="stay-label mono"><span class="dot-sm"></span>Game-Weekend · Austin</div>
       <div class="stay-name">Renaissance Austin Downtown</div>
@@ -695,7 +786,9 @@
   </div>
 
   <div class="stay">
-    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Palazzo%20Las%20Vegas.jpg?width=900" alt="The Palazzo at The Venetian" loading="lazy"></div>
+    <div class="stay-gallery"
+         data-images="img/palazzo-1.jpg|Fassade am Strip;img/palazzo-2.jpg|Suite;img/palazzo-3.jpg|Pool"
+         data-alt="The Palazzo at The Venetian"></div>
     <div class="stay-body">
       <div class="stay-label mono"><span class="dot-sm"></span>Zurück im Basislager · Las Vegas</div>
       <div class="stay-name">The Palazzo at The Venetian</div>
@@ -830,13 +923,100 @@
     });
   });
 
-  // Fehlende Hotel-Fotos: Bild ausblenden, dekorativer Platzhalter bleibt sichtbar
-  document.querySelectorAll('.stay-photo img').forEach(function(img){
-    img.addEventListener('error', function(){
-      img.style.display = 'none';
-      var p = img.closest('.stay-photo');
-      if(p) p.classList.add('noimg');
+  // ============ HOTEL-GALERIEN aufbauen ============
+  // Jede .stay-gallery liest ihre Bilder aus data-images:
+  //   "pfad.jpg|Bildunterschrift;pfad2.jpg|Unterschrift2;..."
+  // Fehlende Dateien werden pro Ansicht sauber ausgeblendet; bleibt keine
+  // einzige Datei übrig, greift der dekorative Platzhalter (✦).
+  document.querySelectorAll('.stay-gallery').forEach(function(gal){
+    var raw = gal.getAttribute('data-images') || '';
+    var alt = gal.getAttribute('data-alt') || 'Hotel';
+    var items = raw.split(';').map(function(s){ return s.trim(); }).filter(Boolean)
+      .map(function(s){
+        var parts = s.split('|');
+        return { src: parts[0].trim(), cap: (parts[1] || '').trim() };
+      });
+    if(!items.length) return;
+
+    var main = document.createElement('div');
+    main.className = 'gallery-main';
+    var glyph = document.createElement('span');
+    glyph.className = 'glyph';
+    glyph.textContent = '✦';
+    main.appendChild(glyph);
+    var caption = document.createElement('div');
+    caption.className = 'gallery-caption mono';
+    main.appendChild(caption);
+
+    var thumbs = document.createElement('div');
+    thumbs.className = 'gallery-thumbs';
+
+    var mainImgs = [];
+    var loadedCount = 0;
+
+    function activate(idx){
+      mainImgs.forEach(function(im, i){
+        if(im) im.classList.toggle('active', i === idx);
+      });
+      Array.prototype.forEach.call(thumbs.children, function(btn, i){
+        btn.classList.toggle('active', i === idx);
+      });
+      var it = items[idx];
+      caption.textContent = it && it.cap ? it.cap : '';
+    }
+
+    items.forEach(function(it, idx){
+      // Hauptbild
+      var im = document.createElement('img');
+      im.alt = alt + (it.cap ? ' — ' + it.cap : '');
+      im.loading = 'lazy';
+      im.src = it.src;
+      // Thumbnail-Button
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', it.cap || (alt + ' Ansicht ' + (idx+1)));
+      var tImg = document.createElement('img');
+      tImg.alt = '';
+      tImg.loading = 'lazy';
+      tImg.src = it.src;
+      var tGlyph = document.createElement('span');
+      tGlyph.className = 'thumb-glyph';
+      tGlyph.textContent = '✦';
+      btn.appendChild(tImg);
+      btn.appendChild(tGlyph);
+
+      function markLoaded(){
+        loadedCount++;
+        main.classList.add('has-img');
+        btn.classList.add('has-img');
+        btn.style.display = '';
+        // erste erfolgreich geladene Ansicht aktiv schalten
+        if(loadedCount === 1){
+          var firstIdx = mainImgs.indexOf(im);
+          activate(firstIdx);
+        }
+      }
+      function markFailed(){
+        // Diese Ansicht ausblenden – Thumbnail raus, Hauptbild leer lassen
+        btn.style.display = 'none';
+      }
+
+      im.addEventListener('load', markLoaded);
+      im.addEventListener('error', markFailed);
+      // Falls Bild bereits aus dem Cache geladen ist
+      if(im.complete){
+        if(im.naturalWidth > 0){ markLoaded(); } else { markFailed(); }
+      }
+
+      btn.addEventListener('click', function(){ activate(idx); });
+
+      mainImgs.push(im);
+      main.appendChild(im);
+      thumbs.appendChild(btn);
     });
+
+    gal.appendChild(main);
+    gal.appendChild(thumbs);
   });
 </script>
 
