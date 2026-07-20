@@ -308,6 +308,56 @@
     font-family:'IBM Plex Mono', monospace;
   }
 
+  /* ============ HOTEL CARD (im Kapitel) ============ */
+  .stay{
+    margin:36px 0 8px;
+    background:var(--bg-panel);
+    border:1px solid var(--hair);
+    border-radius:8px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  }
+  .stay-photo{
+    aspect-ratio:auto;
+    min-height:210px;
+    background:var(--bg-panel-2);
+    position:relative;
+  }
+  .stay-photo img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(0.92) contrast(1.03);
+  }
+  .stay-photo.noimg{
+    display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,110,180,0.10), transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(228,150,80,0.10), transparent 60%),
+      var(--bg-panel-2);
+  }
+  .stay-photo.noimg .glyph{
+    font-size:44px;opacity:0.3;
+  }
+  .stay-body{
+    padding:26px 28px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .stay-label{
+    font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:10px;font-family:'IBM Plex Mono',monospace;
+    display:flex;align-items:center;gap:8px;
+  }
+  .stay-label .dot-sm{width:7px;height:7px;border-radius:50%;display:inline-block;}
+  .vegas .stay-label .dot-sm{background:var(--pink);}
+  .texas .stay-label .dot-sm{background:var(--orange-light);}
+  .stay-name{font-size:21px;font-weight:700;margin-bottom:6px;line-height:1.2;}
+  .stay-meta{font-size:12px;color:var(--muted);margin-bottom:12px;font-family:'IBM Plex Mono',monospace;}
+  .stay-desc{font-size:13.5px;line-height:1.55;color:var(--cream-dim);}
+  @media (max-width:640px){
+    .stay{grid-template-columns:1fr;}
+    .stay-photo{min-height:180px;}
+  }
+
   /* ============ RESTAURANT GUIDE ============ */
   .guide{
     background:var(--bg-panel);
@@ -488,6 +538,16 @@
   </div>
 
   <div class="pull-quote">„Man landet in einer anderen Zeitzone und einer komplett anderen Welt — und drei Tage später steigt man in einen Mustang und fährt nach Texas."</div>
+
+  <div class="stay">
+    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Palazzo%20Las%20Vegas.jpg?width=900" alt="The Palazzo at The Venetian" loading="lazy"></div>
+    <div class="stay-body">
+      <div class="stay-label mono"><span class="dot-sm"></span>Unser Hotel · Las Vegas</div>
+      <div class="stay-name">The Palazzo at The Venetian</div>
+      <div class="stay-meta">Mitten am Strip · beide Vegas-Blöcke</div>
+      <div class="stay-desc">All-Suite-Hotel im italienischen Renaissance-Stil, direkt an den Grand Canal Shoppes. Jedes Zimmer eine Suite — unser Basislager zu Beginn und am Ende der Reise.</div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ CHAPTER II — HILL COUNTRY & RODEO ============ -->
@@ -507,6 +567,26 @@
     <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/101022-F-3431H-989_Robson_Palermo_a_professional_bull_rider_gets_thrown_from_a_bull_during_the_Professional_Bull_Riding_Finals_at_the_Thomas_and_Mack_Center,.jpg?width=1600" alt="Bull Riding beim Rodeo" loading="lazy"></div>
     <figcaption><span>Kap. II — Acht Sekunden auf dem Bullen</span><span>Bulverde, TX</span></figcaption>
   </div>
+
+  <div class="stay">
+    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Austin%20November%202022%2019%20(Lady%20Bird%20Lake).jpg?width=900" alt="Austin am Lady Bird Lake" loading="lazy"><span class="glyph">✦</span></div>
+    <div class="stay-body">
+      <div class="stay-label mono"><span class="dot-sm"></span>Ankunftsnacht · Austin</div>
+      <div class="stay-name">Hyatt Regency Austin</div>
+      <div class="stay-meta">Am Lady Bird Lake · 28.08.</div>
+      <div class="stay-desc">Direkt am Wasser mit Blick auf die Skyline und die berühmte Fledermausbrücke — der ruhige Auftakt der Texas-Etappe nach dem Weiterflug.</div>
+    </div>
+  </div>
+
+  <div class="stay">
+    <div class="stay-photo noimg"><span class="glyph">✦</span></div>
+    <div class="stay-body">
+      <div class="stay-label mono"><span class="dot-sm"></span>Rodeo-Nacht · San Antonio Nord</div>
+      <div class="stay-name">Hyatt Place San Antonio-North</div>
+      <div class="stay-meta">Stone Oak · 29.08.</div>
+      <div class="stay-desc">Nur wenige Minuten vom Tejas-Rodeo-Gelände in Bulverde — praktisch gelegen für den späten Rückweg nach einer langen Nacht mit Live-Band und Two-Step.</div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ CHAPTER III — SAN ANTONIO ============ -->
@@ -524,6 +604,16 @@
   <div class="moment-list">
     <div class="moment"><div class="moment-date mono">Tag 6</div><div class="moment-body"><h3>The Alamo &amp; River Walk</h3><p>Die historische Mission, Schauplatz der berühmten Belagerung von 1836, dann hinunter an den River Walk — Boote, Cafés und Palmen unterhalb des Straßenniveaus.</p></div></div>
     <div class="moment"><div class="moment-date mono">Abend</div><div class="moment-body"><h3>Pearl District</h3><p>Die ehemalige Brauerei-Anlage ist heute Szeneviertel mit Boutiquen, Craft-Bars und einem der besten Farmers Markets der Stadt.</p></div></div>
+  </div>
+
+  <div class="stay">
+    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Grand%20Hyatt%20Hotel%20in%20downtown%20San%20Antonio.jpg?width=900" alt="Grand Hyatt San Antonio" loading="lazy"></div>
+    <div class="stay-body">
+      <div class="stay-label mono"><span class="dot-sm"></span>Unser Hotel · San Antonio</div>
+      <div class="stay-name">Grand Hyatt San Antonio</div>
+      <div class="stay-meta">Downtown, am River Walk · 30.08.</div>
+      <div class="stay-desc">34 Stockwerke mitten in Downtown, direkt neben dem Convention Center und wenige Schritte vom River Walk — mit Rooftop-Pool und Blick über die Stadt.</div>
+    </div>
   </div>
 </section>
 
@@ -543,6 +633,16 @@
   <div class="fig">
     <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Saturn_V_Rocket_--_Johnson_Space_Center.jpg?width=1600" alt="Saturn V Rakete im Space Center Houston" loading="lazy"></div>
     <figcaption><span>Kap. IV — 111 Meter Mondrakete</span><span>Space Center Houston, TX</span></figcaption>
+  </div>
+
+  <div class="stay">
+    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Houston%20Museum%20District.jpg?width=900" alt="Houston Museum District" loading="lazy"><span class="glyph">✦</span></div>
+    <div class="stay-body">
+      <div class="stay-label mono"><span class="dot-sm"></span>Unser Hotel · Houston</div>
+      <div class="stay-name">Hyatt Place Houston Medical Center</div>
+      <div class="stay-meta">Museum District · 31.08.–03.09.</div>
+      <div class="stay-desc">Drei Nächte direkt neben dem Museum District und dem weitläufigen Hermann Park — die grüne, ruhige Seite Houstons als Ausgangspunkt für Space Center und Museen.</div>
+    </div>
   </div>
 </section>
 
@@ -564,6 +664,16 @@
     <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/University_of_Texas_vs._Florida_Atlantic_football_game_Panorama_@_Darrell_K_Royal_Texas_Memorial_Stadium.jpg?width=1600" alt="Darrell K Royal Texas Memorial Stadium" loading="lazy"></div>
     <figcaption><span>Kap. V — Game Day in Burnt Orange</span><span>Austin, TX</span></figcaption>
   </div>
+
+  <div class="stay">
+    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Austin%20Texas%20skyline%202013.jpg?width=900" alt="Austin Skyline" loading="lazy"><span class="glyph">✦</span></div>
+    <div class="stay-body">
+      <div class="stay-label mono"><span class="dot-sm"></span>Game-Weekend · Austin</div>
+      <div class="stay-name">Renaissance Austin Downtown</div>
+      <div class="stay-meta">Downtown, nahe 11th Street · 03.–07.09.</div>
+      <div class="stay-desc">Vier Nächte im Herzen von Downtown Austin — fußläufig zu 6th Street, State Capitol und der Live-Music-Szene, das Basislager für das große Football-Wochenende.</div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ CHAPTER VI — VEGAS FINALE ============ -->
@@ -582,6 +692,16 @@
   <div class="fig">
     <div class="frame"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Grand_Canyon_West_Rim_09_2017_4844.jpg?width=1600" alt="Grand Canyon West Rim" loading="lazy"></div>
     <figcaption><span>Kap. VI — 1.200 Meter Tiefblick</span><span>Grand Canyon West, AZ</span></figcaption>
+  </div>
+
+  <div class="stay">
+    <div class="stay-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Palazzo%20Las%20Vegas.jpg?width=900" alt="The Palazzo at The Venetian" loading="lazy"></div>
+    <div class="stay-body">
+      <div class="stay-label mono"><span class="dot-sm"></span>Zurück im Basislager · Las Vegas</div>
+      <div class="stay-name">The Palazzo at The Venetian</div>
+      <div class="stay-meta">Mitten am Strip · 07.–10.09.</div>
+      <div class="stay-desc">Für die letzten drei Nächte kehren wir zurück ins Palazzo — vertraute Suite, Pool und Strip vor der Haustür, bevor es zurück nach Frankfurt geht.</div>
+    </div>
   </div>
 </section>
 
@@ -671,8 +791,10 @@
   <a href="https://commons.wikimedia.org/wiki/File:San_Antonio_River_Walk_July_2017_06_(Casa_Rio).jpg">River Walk</a> (Michael Barera, CC BY-SA 4.0) ·
   <a href="https://commons.wikimedia.org/wiki/File:Saturn_V_Rocket_--_Johnson_Space_Center.jpg">Saturn V</a> ·
   <a href="https://commons.wikimedia.org/wiki/File:University_of_Texas_vs._Florida_Atlantic_football_game_Panorama_@_Darrell_K_Royal_Texas_Memorial_Stadium.jpg">Stadion</a> ·
-  <a href="https://commons.wikimedia.org/wiki/File:Grand_Canyon_West_Rim_09_2017_4844.jpg">Grand Canyon</a>
-  — Lizenzdetails jeweils auf der verlinkten Dateiseite.
+  <a href="https://commons.wikimedia.org/wiki/File:Grand_Canyon_West_Rim_09_2017_4844.jpg">Grand Canyon</a> ·
+  <a href="https://commons.wikimedia.org/wiki/File:The_Palazzo_Las_Vegas.jpg">Palazzo</a> ·
+  <a href="https://commons.wikimedia.org/wiki/File:Grand_Hyatt_Hotel_in_downtown_San_Antonio.jpg">Grand Hyatt San Antonio</a>
+  — Lizenzdetails jeweils auf der verlinkten Dateiseite. Wo für ein Hotel kein frei lizenziertes Foto vorliegt, zeigt die Karte einen dezenten Platzhalter.
 </footer>
 
 <script>
@@ -700,11 +822,20 @@
   tick();
   setInterval(tick, 1000);
 
-  // Fehlende Bilder: Rahmen sauber ausblenden statt Broken-Image-Icon
+  // Fehlende Kapitel-Bilder: Rahmen sauber ausblenden statt Broken-Image-Icon
   document.querySelectorAll('.fig img').forEach(function(img){
     img.addEventListener('error', function(){
       var f = img.closest('.fig');
       if(f) f.style.display = 'none';
+    });
+  });
+
+  // Fehlende Hotel-Fotos: Bild ausblenden, dekorativer Platzhalter bleibt sichtbar
+  document.querySelectorAll('.stay-photo img').forEach(function(img){
+    img.addEventListener('error', function(){
+      img.style.display = 'none';
+      var p = img.closest('.stay-photo');
+      if(p) p.classList.add('noimg');
     });
   });
 </script>
